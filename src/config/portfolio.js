@@ -106,6 +106,7 @@ export const projects = [
     technologies: ["React", "TailwindCSS", "Redux", "Axios", "RapidAPI", "React Router", "Swiper"],
     demo: "https://spotify-clone-bqgr.onrender.com",
     github: "https://github.com/tnttb79/Spotify-Clone-Full-stack_07_03-08_01",
+    preAi: true,
   },
   {
     id: 3,
@@ -118,6 +119,7 @@ export const projects = [
     technologies: ["React", "TailwindCSS", "MongoDB", "Express", "Redux", "JWT", "React Router"],
     demo: "https://my-memories-uf61.onrender.com",
     github: "https://github.com/tnttb79/WEB-REACT-MyGallery-fullstack-MERN-app",
+    preAi: true,
   },
   {
     id: 4,
@@ -130,6 +132,7 @@ export const projects = [
     technologies: ["React", "Material-UI", "React Router", "Nivo Charts", "Formik", "Yup", "FullCalendar"],
     demo: "https://admin-dashboard-8hz5.onrender.com",
     github: "https://github.com/tnttb79/WEB-REACT-dashboar-frontend_5_15-6_29",
+    preAi: true,
   },
   {
     id: 5,
@@ -142,5 +145,6 @@ export const projects = [
     technologies: ["React", "TypeScript", "Material-UI", ".NET Core 8", "SQL Server", "Docker Compose", "EF Core"],
     demo: null,
     github: "https://github.com/tnttb79/ResumeMgtWebAPIDotNet",
+    preAi: true,
   },
 ];

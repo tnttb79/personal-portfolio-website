@@ -50,6 +50,11 @@
   /* Layout */
   --nav-h: 56px;
   --maxw: 1080px;
+
+  /* Vintage stamp ink (theme-independent) */
+  --stamp-ink: #7a2a22;
+  --stamp-ink-soft: rgba(122, 42, 34, 0.22);
+  --stamp-paper: rgba(252, 246, 238, 0.97);
 }
 
 [data-theme="midnight"] {
