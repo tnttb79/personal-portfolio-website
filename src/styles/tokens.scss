@@ -51,10 +51,12 @@
   --nav-h: 56px;
   --maxw: 1080px;
 
-  /* Vintage stamp ink (theme-independent) */
-  --stamp-ink: #7a2a22;
-  --stamp-ink-soft: rgba(122, 42, 34, 0.22);
-  --stamp-paper: rgba(252, 246, 238, 0.97);
+  /* Vintage food-cert label / seal (theme-independent) */
+  --stamp-ink: #1a5c34;
+  --stamp-ink-soft: rgba(26, 92, 52, 0.18);
+  --stamp-paper: rgba(252, 248, 238, 0.97);
+  --stamp-gold: #b8860b;
+  --stamp-gold-soft: rgba(184, 134, 11, 0.35);
 }
 
 [data-theme="midnight"] {
