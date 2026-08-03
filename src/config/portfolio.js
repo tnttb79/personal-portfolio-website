@@ -147,4 +147,16 @@ export const projects = [
     github: "https://github.com/tnttb79/ResumeMgtWebAPIDotNet",
     preAi: true,
   },
+  {
+    id: 6,
+    slug: "wix-headless-astro",
+    type: "dir",
+    title: "Wix Headless + Astro",
+    img: "/marinHolyHill.png",
+    desc:
+      "An experiment in using Wix as a headless CMS — custom frontend, Wix backend. Astro with React islands for the UI, Wix Headless for CMS, forms, and hosting, plus a custom design system on top.",
+    technologies: ["Astro", "React", "TypeScript", "Wix Headless", "Wix Data", "Wix Forms", "Cloudflare"],
+    demo: "https://www.marinholyhillacu.com/",
+    github: "https://github.com/tnttb79/astro-wix-headless-cms",
+  },
 ];
