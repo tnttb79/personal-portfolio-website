@@ -13,12 +13,20 @@ const ProjectCard = ({ p }) => (
     </div>
     <div className="thumb">
       <div className="thumb-inner">
-        <img
-          src={p.img}
-          alt={`${p.title} screenshot`}
-          className={p.cropClientHeader ? "crop-client-header" : undefined}
-          loading="lazy"
-        />
+        {p.visual === "architecture" ? (
+          <div className="architecture-thumb" role="img" aria-label="Frontend, integration layer, and managed services architecture diagram">
+            <span>Astro + React</span>
+            <i aria-hidden="true">↓</i>
+            <span>Typed adapters</span>
+            <i aria-hidden="true">↓</i>
+            <div>
+              <span>Headless CMS</span>
+              <span>Calendar API</span>
+            </div>
+          </div>
+        ) : (
+          <img src={p.img} alt={`${p.title} screenshot`} loading="lazy" />
+        )}
       </div>
       {p.preAi && <PreAiStamp />}
     </div>

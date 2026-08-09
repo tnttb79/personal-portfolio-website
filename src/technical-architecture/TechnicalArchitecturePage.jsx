@@ -1,7 +1,5 @@
 import "./technical-architecture.scss";
 
-const LIVE_SITE = "https://www.marinholyhillacu.com/";
-
 const technologies = [
   "Astro",
   "React",
@@ -35,40 +33,40 @@ const tradeoffs = [
   {
     marker: "✓",
     title: "Hybrid headless architecture",
-    detail: "A code-owned frontend backed by managed content and business services: full UI control without rebuilding the client’s operating dashboard.",
+    detail: "A code-owned frontend backed by managed content and business services: full UI control without rebuilding an operations dashboard.",
     tags: ["chosen", "balanced ownership"],
     chosen: true,
   },
 ];
 
 const bookingSteps = [
-  ["01", "Patient type", "New or existing patient"],
-  ["02", "Clinic", "Choose one of two locations"],
-  ["03", "Service", "Filter eligible appointment types"],
-  ["04", "Date", "Load location-specific schedule"],
-  ["05", "Availability", "Calculate open booking windows"],
-  ["06", "Conflict check", "Query fresh Calendar busy periods"],
-  ["07", "Slot filtering", "Remove occupied and ineligible times"],
-  ["08", "Selection", "Patient chooses a verified slot"],
-  ["09", "Details", "Collect required booking information"],
-  ["10", "Revalidation", "Server checks the slot again"],
-  ["11", "Appointment", "Reserve slot and create Calendar event"],
-  ["12", "Confirmation", "Send patient confirmation email"],
+  ["01", "Configuration", "Load scheduling rules and service constraints"],
+  ["02", "Request", "Collect scheduling context and requested date"],
+  ["03", "Candidates", "Generate slots from configured time windows"],
+  ["04", "Busy query", "Fetch current Calendar busy periods"],
+  ["05", "Normalization", "Map external ranges to domain intervals"],
+  ["06", "Conflict filter", "Remove overlapping or ineligible slots"],
+  ["07", "Presentation", "Return verified availability to the UI"],
+  ["08", "Validation", "Validate the submitted booking payload"],
+  ["09", "Revalidation", "Query availability again on the server"],
+  ["10", "Reservation", "Acquire a deterministic per-slot lock"],
+  ["11", "Event write", "Create the Calendar event"],
+  ["12", "Notification", "Trigger the confirmation workflow"],
 ];
 
 const engineeringConcerns = [
   ["Conflict detection", "Busy periods are checked against every calendar configured to block availability."],
   ["Race protection", "A deterministic per-slot reservation prevents two near-simultaneous requests from claiming the same appointment."],
   ["Dynamic scheduling", "Business hours, closures, lead time, and booking horizon are applied before a slot is offered."],
-  ["Multiple locations", "Location-specific hours, services, and calendar destinations flow through one booking experience."],
+  ["Configuration-driven rules", "Hours, services, and calendar destinations flow through one reusable scheduling engine."],
   ["Trusted execution", "Calendar credentials and appointment creation remain behind server routes, never in browser code."],
 ];
 
 const decisions = [
   ["Astro instead of a full SPA", "Content-heavy pages stay server rendered. React is reserved for interactions that benefit from client state."],
-  ["Headless instead of a custom admin", "The client keeps a mature business-management interface while the customer experience remains custom coded."],
+  ["Headless instead of a custom admin", "Operators retain a mature management interface while the public experience remains custom coded."],
   ["Adapters instead of raw SDK calls", "External response formats stay isolated from page components and map into predictable domain types."],
-  ["Google Calendar instead of a scheduling suite", "The clinic needed a focused direct-booking workflow, so Calendar provides a lightweight scheduling source of truth."],
+  ["Google Calendar instead of a scheduling suite", "The workflow required focused direct booking, so Calendar provides a lightweight scheduling source of truth."],
   ["Configuration instead of hardcoding", "Services, hours, pricing, locations, and content can change without editing presentation code."],
 ];
 
@@ -87,7 +85,7 @@ const outcomes = [
   "Custom direct booking",
   "Google Calendar synchronization",
   "Managed article publishing",
-  "Two clinic locations",
+  "Configuration-driven scheduling",
   "Forms and CRM integration",
   "Server-side trusted operations",
 ];
@@ -163,25 +161,25 @@ function Pipeline({ steps, label }) {
 function TechnicalArchitecturePage() {
   return (
     <div className="technical-architecture">
-      <a className="ta-skip-link" href="#case-study-content">Skip to case study</a>
+      <a className="ta-skip-link" href="#architecture-content">Skip to architecture</a>
 
       <header className="ta-topbar">
         <div className="ta-brand mono">
           <span className="ta-brand-prompt">thang@portfolio</span>
-          <span className="ta-brand-path">:~/case-studies$</span>
+          <span className="ta-brand-path">:~/projects$</span>
           <span>open technical-architecture</span>
         </div>
-        <a className="ta-live-link mono" href={LIVE_SITE} target="_blank" rel="noreferrer">
-          View live site <ArrowIcon />
+        <a className="ta-live-link mono" href="/#projects">
+          Back to projects <ArrowIcon />
         </a>
       </header>
 
-      <main id="case-study-content">
-        <section className="ta-hero" aria-labelledby="case-study-title">
+      <main id="architecture-content">
+        <section className="ta-hero" aria-labelledby="architecture-title">
           <div className="ta-hero-copy">
-            <p className="ta-kicker mono"><span>production_case_study</span> / architecture</p>
-            <h1 id="case-study-title">
-              Marin Holy Hill Acupuncture
+            <p className="ta-kicker mono"><span>production_system</span> / architecture</p>
+            <h1 id="architecture-title">
+              Production Web Application
               <span>Technical Architecture</span>
             </h1>
             <p className="ta-hero-lede">
@@ -192,10 +190,8 @@ function TechnicalArchitecturePage() {
               {technologies.map((technology) => <span className="mono" key={technology}>{technology}</span>)}
             </div>
             <div className="ta-hero-actions">
-              <a className="ta-button ta-button--primary mono" href={LIVE_SITE} target="_blank" rel="noreferrer">
-                View production site <ArrowIcon />
-              </a>
-              <a className="ta-button mono" href="#system-architecture">Explore architecture <span aria-hidden="true">↓</span></a>
+              <a className="ta-button ta-button--primary mono" href="#system-architecture">Explore architecture <span aria-hidden="true">↓</span></a>
+              <a className="ta-button mono" href="/#projects">Back to projects <ArrowIcon /></a>
             </div>
           </div>
 
@@ -216,7 +212,7 @@ function TechnicalArchitecturePage() {
 
           <div className="ta-snapshot" aria-label="Project snapshot">
             <div><strong>Production</strong><span>customer-facing application</span></div>
-            <div><strong>2</strong><span>clinic locations</span></div>
+            <div><strong>Typed</strong><span>integration boundary</span></div>
             <div><strong>SSR</strong><span>content-first delivery</span></div>
             <div><strong>Direct</strong><span>calendar-connected booking</span></div>
           </div>
@@ -227,18 +223,17 @@ function TechnicalArchitecturePage() {
             index="01"
             eyebrow="Project overview"
             title="A custom production application with a practical operating model."
-            description="The project replaces a conventional builder-led frontend while preserving the client’s ability to run the business without depending on a developer for routine updates."
+            description="The project replaces a conventional builder-led frontend while preserving straightforward content and operations management."
           />
           <div className="ta-overview-grid">
             <div className="ta-prose">
               <p>
-                I rebuilt an existing small-business healthcare website as a custom application, with Astro and
-                TypeScript owning the page structure, responsive user experience, and integration logic.
+                I rebuilt an existing production website as a custom application, with Astro and TypeScript owning the
+                page structure, responsive user experience, and integration logic.
               </p>
               <p>
-                The central requirement was not purely technical: the client still needed a straightforward way to
-                update services, pricing, locations, articles, forms, and other business information through a familiar
-                administrative interface.
+                The central architectural requirement was to separate the custom presentation layer from frequently
+                changing content and operational records managed outside the codebase.
               </p>
               <p>
                 The resulting headless system separates presentation from operations. The frontend remains fully custom,
@@ -380,10 +375,10 @@ function TechnicalArchitecturePage() {
               <p className="ta-card-label mono">managed_services_own</p>
               <h3>Business content</h3>
               <ul>
-                <li>Services, pricing, and clinic details</li>
-                <li>Business hours and closures</li>
-                <li>Forms, articles, and submissions</li>
-                <li>Operational business records</li>
+                <li>Structured content records</li>
+                <li>Scheduling configuration</li>
+                <li>Publishing and form submissions</li>
+                <li>Operational records</li>
               </ul>
             </article>
           </div>
@@ -421,7 +416,7 @@ function TechnicalArchitecturePage() {
             index="06"
             eyebrow="Custom booking system"
             title="A direct scheduling workflow built around Google Calendar."
-            description="Instead of embedding a generic scheduling widget, I built a custom booking experience that matches the site and validates availability against the clinic’s calendars."
+            description="Instead of embedding a generic scheduling widget, I built a custom workflow that validates availability against Google Calendar through trusted server routes."
           />
 
           <div className="ta-booking-summary">
@@ -434,7 +429,7 @@ function TechnicalArchitecturePage() {
             <div>
               <p className="ta-card-label mono">custom_application_layer</p>
               <h3>Booking engine</h3>
-              <p>Location rules, services, hours, closures, lead time, slot locking, validation, and confirmations stay under application control.</p>
+              <p>Availability rules, lead time, slot locking, validation, and confirmations stay under application control.</p>
             </div>
           </div>
 
@@ -468,8 +463,8 @@ function TechnicalArchitecturePage() {
           <div className="ta-integration-grid">
             <article className="ta-integration-card">
               <p className="ta-card-label mono">managed_article_publishing</p>
-              <h3>Health Articles</h3>
-              <p>The business owner can publish articles without developer involvement. The frontend queries the external content service and renders both listing and detail routes.</p>
+              <h3>Content publishing</h3>
+              <p>Editors can publish content without developer involvement. The frontend queries the external content service and renders listing and detail routes.</p>
               <Pipeline
                 label="Business dashboard publishes through the content API to Astro article listing and detail pages"
                 steps={["Business dashboard", "Content API", "Astro frontend", "/articles", "/articles/[slug]"]}
@@ -478,7 +473,7 @@ function TechnicalArchitecturePage() {
             <article className="ta-integration-card">
               <p className="ta-card-label mono">forms_and_crm</p>
               <h3>Contact workflow</h3>
-              <p>A custom form posts through a trusted server route into managed forms and contact infrastructure, preserving both the site’s UI and the client’s existing workflow.</p>
+              <p>A custom form posts through a trusted server route into managed forms and contact infrastructure while preserving the application’s UI.</p>
               <Pipeline
                 label="Custom form submits through a server API route to forms and CRM services and the business dashboard"
                 steps={["Custom form", "Server API", "Forms service", "CRM", "Business dashboard"]}
@@ -507,7 +502,7 @@ function TechnicalArchitecturePage() {
             <ul className="ta-security-list">
               <li><strong>Server-only credentials.</strong> API secrets and trusted service access are never shipped in browser bundles.</li>
               <li><strong>Controlled write paths.</strong> Booking and contact operations cross validated server endpoints.</li>
-              <li><strong>Analytics minimization.</strong> Booking and form payloads are not intentionally written to analytics; events avoid patient information.</li>
+              <li><strong>Analytics minimization.</strong> Booking and form payloads are not intentionally written to analytics; events avoid personal information.</li>
               <li><strong>Isolated integrations.</strong> API-specific details live behind adapters and server modules rather than leaking into UI code.</li>
             </ul>
           </div>
@@ -555,16 +550,16 @@ function TechnicalArchitecturePage() {
               <p className="ta-eyebrow mono">11 / result</p>
               <h2 id="outcome-title">Custom application control. Managed operational convenience.</h2>
               <p>
-                The final product combines a fully custom customer-facing experience with infrastructure the business can
-                operate independently. Content, pricing, articles, forms, and scheduling configuration remain manageable,
-                while the frontend and booking logic are engineered in code.
+                The final product combines a custom customer-facing experience with managed infrastructure. Content,
+                forms, and scheduling configuration remain decoupled from presentation code, while the frontend and
+                booking logic are engineered as typed application layers.
               </p>
               <p>
-                It also gives the clinic a direct appointment workflow connected to its own calendars, reducing dependence
-                on an external appointment marketplace for the primary booking path.
+                The scheduling flow checks fresh Calendar availability, filters conflicts, revalidates submissions, and
+                creates events through protected server-side integrations.
               </p>
-              <a className="ta-button ta-button--primary mono" href={LIVE_SITE} target="_blank" rel="noreferrer">
-                View production site <ArrowIcon />
+              <a className="ta-button ta-button--primary mono" href="#system-architecture">
+                Review system map <span aria-hidden="true">↑</span>
               </a>
             </div>
             <ul className="ta-outcome-list">
@@ -575,8 +570,8 @@ function TechnicalArchitecturePage() {
       </main>
 
       <footer className="ta-footer">
-        <p className="mono"><span>thang@portfolio</span>:~/case-studies$ status --complete</p>
-        <a className="mono" href={LIVE_SITE} target="_blank" rel="noreferrer">marinholyhillacu.com <ArrowIcon /></a>
+        <p className="mono"><span>thang@portfolio</span>:~/projects$ status --complete</p>
+        <a className="mono" href="/#projects">Back to portfolio <ArrowIcon /></a>
       </footer>
     </div>
   );

@@ -100,8 +100,7 @@ export const projects = [
     slug: "healthcare-booking-system",
     type: "dir",
     title: "Healthcare Practice Website & Booking System",
-    img: "/marinHolyHill.png",
-    cropClientHeader: true,
+    visual: "architecture",
     desc:
       "Designed, developed, and launched a production website for a healthcare practice using Astro, React, and TypeScript, with headless content management and a custom Google Calendar-integrated appointment booking system.",
     technologies: ["Astro", "React", "TypeScript", "SSR", "Headless CMS", "Google Calendar API", "Google Cloud"],
