@@ -96,6 +96,18 @@ export const projects = [
     github: "https://github.com/tnttb79/auth-related/tree/main/iframe-auth",
   },
   {
+    id: 7,
+    slug: "agent-skills-factory",
+    type: "dir",
+    title: "Agent Skills Factory",
+    img: "/agentSkillsFactory.png",
+    desc:
+      "A personal skills factory for authoring generic, reusable Agent Skills once against the open standard and installing them into other projects through skills.sh. Built around disciplined, portable authoring so the same skills work across supported coding-agent harnesses without leaking tool-specific assumptions.",
+    technologies: ["Agent Skills", "skills.sh", "AI Developer Tooling", "Open Standard", "Cross-Harness", "Portable Workflows"],
+    demo: "https://www.skills.sh/tnttb79/tnttb79-skills",
+    github: "https://github.com/tnttb79/tnttb79-skills",
+  },
+  {
     id: 2,
     slug: "healthcare-booking-system",
     type: "dir",
