@@ -13,7 +13,12 @@ const ProjectCard = ({ p }) => (
     </div>
     <div className="thumb">
       <div className="thumb-inner">
-        <img src={p.img} alt={`${p.title} screenshot`} loading="lazy" />
+        <img
+          src={p.img}
+          alt={`${p.title} screenshot`}
+          className={p.cropClientHeader ? "crop-client-header" : undefined}
+          loading="lazy"
+        />
       </div>
       {p.preAi && <PreAiStamp />}
     </div>
@@ -28,17 +33,19 @@ const ProjectCard = ({ p }) => (
       <div className="links">
         {p.demo ? (
           <a className="primary" href={p.demo} target="_blank" rel="noreferrer">
-            ▸ Live Demo
+            ▸ {p.demoLabel || "Live Demo"}
           </a>
         ) : (
           <button className="disabled" type="button" disabled>
             demo: coming soon
           </button>
         )}
-        <a href={p.github} target="_blank" rel="noreferrer">
-          <img src="/github.png" alt="" />
-          GitHub
-        </a>
+        {p.github && (
+          <a href={p.github} target="_blank" rel="noreferrer">
+            <img src="/github.png" alt="" />
+            GitHub
+          </a>
+        )}
       </div>
     </div>
   </article>

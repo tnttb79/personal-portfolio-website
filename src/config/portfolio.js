@@ -97,6 +97,20 @@ export const projects = [
   },
   {
     id: 2,
+    slug: "healthcare-booking-system",
+    type: "dir",
+    title: "Healthcare Practice Website & Booking System",
+    img: "/marinHolyHill.png",
+    cropClientHeader: true,
+    desc:
+      "Designed, developed, and launched a production website for a healthcare practice using Astro, React, and TypeScript, with headless content management and a custom Google Calendar-integrated appointment booking system.",
+    technologies: ["Astro", "React", "TypeScript", "SSR", "Headless CMS", "Google Calendar API", "Google Cloud"],
+    demo: "/technical-architecture",
+    demoLabel: "Technical details",
+    github: null,
+  },
+  {
+    id: 3,
     slug: "spotify-clone",
     type: "dir",
     title: "Spotify Clone",
@@ -109,7 +123,7 @@ export const projects = [
     preAi: true,
   },
   {
-    id: 3,
+    id: 4,
     slug: "social-app",
     type: "dir",
     title: "Social App",
@@ -122,7 +136,7 @@ export const projects = [
     preAi: true,
   },
   {
-    id: 4,
+    id: 5,
     slug: "admin-dashboard",
     type: "dir",
     title: "Admin Dashboard",
@@ -135,7 +149,7 @@ export const projects = [
     preAi: true,
   },
   {
-    id: 5,
+    id: 6,
     slug: "application-management",
     type: "dir",
     title: "Application Management",
@@ -146,17 +160,5 @@ export const projects = [
     demo: null,
     github: "https://github.com/tnttb79/ResumeMgtWebAPIDotNet",
     preAi: true,
-  },
-  {
-    id: 6,
-    slug: "wix-headless-astro",
-    type: "dir",
-    title: "Wix Headless + Astro",
-    img: "/marinHolyHill.png",
-    desc:
-      "An experiment in using Wix as a headless CMS — custom frontend, Wix backend. Astro with React islands for the UI, Wix Headless for CMS, forms, and hosting, plus a custom design system on top.",
-    technologies: ["Astro", "React", "TypeScript", "Wix Headless", "Wix Data", "Wix Forms", "Cloudflare"],
-    demo: "https://www.marinholyhillacu.com/",
-    github: "https://github.com/tnttb79/astro-wix-headless-cms",
   },
 ];

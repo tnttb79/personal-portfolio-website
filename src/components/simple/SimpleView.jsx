@@ -75,7 +75,7 @@ const SimpleView = ({ onExit }) => {
         </section>
 
         <section className="simple-section" aria-labelledby="s-proj">
-          <p className="simple-label" id="s-proj"><span>03</span> Hobby projects</p>
+          <p className="simple-label" id="s-proj"><span>03</span> Selected projects</p>
           <ul className="simple-projects">
             {visibleProjects.map((p) => (
               <li key={p.id}>
@@ -83,9 +83,11 @@ const SimpleView = ({ onExit }) => {
                   <h3>{p.title}</h3>
                   <div className="proj-links">
                     {p.demo && (
-                      <a href={p.demo} target="_blank" rel="noreferrer">Live ↗</a>
+                      <a href={p.demo} target="_blank" rel="noreferrer">{p.demoLabel || "Live"} ↗</a>
                     )}
-                    <a href={p.github} target="_blank" rel="noreferrer">Code ↗</a>
+                    {p.github && (
+                      <a href={p.github} target="_blank" rel="noreferrer">Code ↗</a>
+                    )}
                   </div>
                 </div>
                 <p className="proj-desc">{p.desc}</p>
