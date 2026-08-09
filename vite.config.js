@@ -12,7 +12,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(projectRoot, 'index.html'),
-        technicalArchitecture: resolve(projectRoot, 'technical-architecture/index.html'),
+        healthcareBookingSystem: resolve(projectRoot, 'healthcare-booking-system/index.html'),
       },
     },
   },

@@ -105,8 +105,8 @@ export const projects = [
       "Designed, developed, and launched a production website for a healthcare practice using Astro, React, and TypeScript, with headless content management and a custom Google Calendar-integrated appointment booking system.",
     technologies: ["Astro", "React", "TypeScript", "SSR", "Headless CMS", "Google Calendar API", "Google Cloud"],
     demo: "https://www.marinholyhillacu.com/",
-    details: "/technical-architecture",
-    github: null,
+    details: "/healthcare-booking-system",
+    github: "https://github.com/tnttb79/astro-wix-headless-cms",
   },
   {
     id: 3,

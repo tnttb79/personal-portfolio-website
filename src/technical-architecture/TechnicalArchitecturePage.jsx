@@ -90,14 +90,6 @@ const outcomes = [
   "Server-side trusted operations",
 ];
 
-function ArrowIcon() {
-  return (
-    <svg viewBox="0 0 20 20" aria-hidden="true">
-      <path d="M5 15 15 5M7 5h8v8" />
-    </svg>
-  );
-}
-
 function FlowArrow({ label }) {
   return (
     <div className="ta-flow-arrow" aria-hidden="true">
@@ -167,11 +159,8 @@ function TechnicalArchitecturePage() {
         <div className="ta-brand mono">
           <span className="ta-brand-prompt">thang@portfolio</span>
           <span className="ta-brand-path">:~/projects$</span>
-          <span>open technical-architecture</span>
+          <span>open healthcare-booking-system</span>
         </div>
-        <a className="ta-live-link mono" href="/#projects">
-          Back to projects <ArrowIcon />
-        </a>
       </header>
 
       <main id="architecture-content">
@@ -188,10 +177,6 @@ function TechnicalArchitecturePage() {
             </p>
             <div className="ta-badges" aria-label="Project technologies">
               {technologies.map((technology) => <span className="mono" key={technology}>{technology}</span>)}
-            </div>
-            <div className="ta-hero-actions">
-              <a className="ta-button ta-button--primary mono" href="#system-architecture">Explore architecture <span aria-hidden="true">↓</span></a>
-              <a className="ta-button mono" href="/#projects">Back to projects <ArrowIcon /></a>
             </div>
           </div>
 
@@ -558,9 +543,6 @@ function TechnicalArchitecturePage() {
                 The scheduling flow checks fresh Calendar availability, filters conflicts, revalidates submissions, and
                 creates events through protected server-side integrations.
               </p>
-              <a className="ta-button ta-button--primary mono" href="#system-architecture">
-                Review system map <span aria-hidden="true">↑</span>
-              </a>
             </div>
             <ul className="ta-outcome-list">
               {outcomes.map((outcome) => <li key={outcome}><span aria-hidden="true">✓</span>{outcome}</li>)}
@@ -571,7 +553,6 @@ function TechnicalArchitecturePage() {
 
       <footer className="ta-footer">
         <p className="mono"><span>thang@portfolio</span>:~/projects$ status --complete</p>
-        <a className="mono" href="/#projects">Back to portfolio <ArrowIcon /></a>
       </footer>
     </div>
   );
