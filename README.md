@@ -1,6 +1,6 @@
-🚀🚀🚀Welcome to my Personal Portfolio Website project! 🚀🚀🚀This website is built using React, Framer Motion, Sass, and EmailJS to showcase my projects, resume, and provide a contact form with various cool animations and a parallax effect. It's also fully responsive for different devices and screen sizes.🚀🚀🚀
+Welcome to my Personal Portfolio Website project! This website is built using React, Framer Motion, Sass, and EmailJS to showcase my projects, resume, and provide a contact form with various cool animations and a parallax effect. It's also fully responsive for different devices and screen sizes.
 
-## Live demo🚀🚀🚀:
+## Live demo:
 
 ### https://www.thangta.net/
 
@@ -35,6 +35,6 @@ cd Personal-Portfolio-Website`
    `npm start`
    `Visit http://localhost:your_port` in your web browser to view the website.
 
-Happy coding! 🚀🚀🚀
+Happy coding! 
 
 5d
