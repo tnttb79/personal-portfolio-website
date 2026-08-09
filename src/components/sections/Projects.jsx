@@ -48,6 +48,11 @@ const ProjectCard = ({ p }) => (
             demo: coming soon
           </button>
         )}
+        {p.details && (
+          <a href={p.details} target="_blank" rel="noreferrer">
+            Technical details
+          </a>
+        )}
         {p.github && (
           <a href={p.github} target="_blank" rel="noreferrer">
             <img src="/github.png" alt="" />

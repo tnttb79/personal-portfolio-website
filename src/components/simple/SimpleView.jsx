@@ -85,6 +85,9 @@ const SimpleView = ({ onExit }) => {
                     {p.demo && (
                       <a href={p.demo} target="_blank" rel="noreferrer">{p.demoLabel || "Live"} ↗</a>
                     )}
+                    {p.details && (
+                      <a href={p.details} target="_blank" rel="noreferrer">Technical details ↗</a>
+                    )}
                     {p.github && (
                       <a href={p.github} target="_blank" rel="noreferrer">Code ↗</a>
                     )}

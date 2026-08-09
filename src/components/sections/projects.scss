@@ -133,6 +133,7 @@
 
     .thumb {
       position: relative;
+      flex: 0 0 auto;
       aspect-ratio: 16 / 10;
       overflow: visible;
       background: var(--surface);
@@ -205,6 +206,8 @@
       h3 {
         font-family: var(--font-mono);
         font-size: 18px;
+        line-height: 1.25;
+        min-height: 2.5em;
         color: var(--text-primary);
       }
 
