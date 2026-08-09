@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./projects.scss";
 import { projects } from "../../config/portfolio";
-import PreAiStamp from "./PreAiStamp";
 
 const PREVIEW_COUNT = 2;
 
@@ -28,7 +27,6 @@ const ProjectCard = ({ p }) => (
           <img src={p.img} alt={`${p.title} screenshot`} loading="lazy" />
         )}
       </div>
-      {p.preAi && <PreAiStamp />}
     </div>
     <div className="card-body">
       <h3>{p.title}</h3>
