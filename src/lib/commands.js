@@ -1,5 +1,5 @@
 import { scrollToSection } from "./scroll";
-import { resumeUrl, socials } from "../config/portfolio";
+import { profile, resumeUrl, socials } from "../config/portfolio";
 
 export const THEMES = ["dark", "midnight", "matrix"];
 
@@ -33,7 +33,7 @@ export function createCommandRegistry({ setTheme, clearHistory }) {
         "Available commands:",
         "  about        view background",
         "  skills       view technical stack",
-        "  projects     peek at my abandoned projects",
+        "  projects     view selected projects",
         "  resume       view resume",
         "  contact      get in touch",
         "  theme <name> switch theme (dark | midnight | matrix)",
@@ -53,8 +53,8 @@ export function createCommandRegistry({ setTheme, clearHistory }) {
     },
     whoami: () => ({
       lines: [
-        "Thang Ta :: Software Developer",
-        "React • .NET • Node.js • Python • SQL • Cloud",
+        `${profile.name} :: ${profile.role}`,
+        profile.stack.join(" • "),
       ],
       tone: "ok",
     }),

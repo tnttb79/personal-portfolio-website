@@ -16,7 +16,7 @@ const BOOT = [
 const HERO_COMMANDS = [
   ["about", "view background"],
   ["skills", "view technical stack"],
-  ["projects", "peek at my abandoned projects"],
+  ["projects", "view selected projects"],
   ["resume", "view resume"],
   ["contact", "get in touch"],
 ];

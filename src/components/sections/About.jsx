@@ -1,5 +1,5 @@
 import "./sections.scss";
-import { about, socials, resumeUrl } from "../../config/portfolio";
+import { about, profile, socials, resumeUrl } from "../../config/portfolio";
 
 const About = ({ runCommand }) => {
   return (
@@ -27,7 +27,7 @@ const About = ({ runCommand }) => {
         </div>
         <div className="facts">
           <div className="row"><span className="key">name</span><span className="val">{"Thang Ta"}</span></div>
-          <div className="row"><span className="key">role</span><span className="val">Software Developer</span></div>
+          <div className="row"><span className="key">role</span><span className="val">{profile.role}</span></div>
           <div className="row"><span className="key">location</span><span className="val">{socials.location}</span></div>
           <div className="row"><span className="key">status</span><span className="val" style={{ color: "var(--accent)" }}>maybe open to work</span></div>
           <div className="socials">

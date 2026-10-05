@@ -5,14 +5,14 @@ export const profile = {
   name: "Thang Ta",
   user: "thang",
   host: "portfolio",
-  role: "Software Developer",
-  tagline: "Full-stack & data-driven software",
-  stack: ["React", "TypeScript", ".NET", "Node.js", "Python", "SQL", "Cloud"],
+  role: "AI Engineer & Software Developer",
+  tagline: "AI engineering & full-stack software",
+  stack: ["AI Agents", "RAG", "LLM Evals", "React", "TypeScript", ".NET", "Python", "Cloud"],
   blurb:
-    "I build full-stack web apps, internal tools, and cloud-ready software with React, .NET, Node.js, Python, and SQL.",
+    "I build AI-powered tools and full-stack apps, turning complex ideas into practical, easy-to-use software.",
 };
 
-export const resumeUrl = "/Thang_Ta_Resume(WD).pdf";
+export const resumeUrl = "/Thang_Ta_Resume.pdf";
 
 export const socials = {
   email: "tanguyentruongthang@gmail.com",
@@ -34,8 +34,8 @@ export const navItems = [
 export const about = {
   command: "cat about.md",
   paragraphs: [
-    "Hey there, I'm Thang Ta, a passionate Software Developer. My journey began with SQL and Python for data analysis and grew into full-stack software development through building real, shippable projects.",
-    "I care about clean architecture, readable code, and products that actually help the people using them. Outside the editor I enjoy learning languages and playing soccer.",
+    "Hey, I'm Thang, an AI Engineer and Software Developer who enjoys building things from idea to working product. I'm drawn to the intersection of AI, software engineering, and thoughtful design.",
+    "I care about clean architecture, useful details, and learning by building. This portfolio is where I share projects and ideas I'm excited about. Outside of coding, I enjoy learning languages and playing soccer.",
   ],
 };
 
@@ -65,20 +65,43 @@ export const experience = [
 // Grouped for a `skills --grouped` tree view.
 export const skills = [
   {
-    group: "Frontend",
-    items: ["React / Next.js", "React Native", "TypeScript", "TailwindCSS", "UI Architecture"],
+    group: "AI Engineering",
+    items: [
+      "LLMs / RAG / AI Agents",
+      "LangChain / LangGraph / LangSmith",
+      "MCP / AWS Bedrock",
+      "Embeddings / Vector Search",
+      "LLM Evals",
+    ],
   },
   {
-    group: "Backend",
-    items: ["ASP.NET Core (C#)", "Node.js (Express / NestJS)", "FastAPI (Python)", "C++", "REST / GraphQL"],
+    group: "Languages & Frameworks",
+    items: [
+      "C# / ASP.NET Core",
+      "Python / FastAPI",
+      "TypeScript / JavaScript / Node.js",
+      "React / Next.js / React Native",
+      "Java / Spring Boot",
+    ],
   },
   {
-    group: "Data",
-    items: ["SQL Server", "PostgreSQL", "MongoDB", "Redis", "EF Core / SQLAlchemy / Mongoose"],
+    group: "APIs, Data & Messaging",
+    items: [
+      "REST / GraphQL",
+      "Kafka / RabbitMQ",
+      "SQL Server / PostgreSQL",
+      "MongoDB / Redis / Snowflake",
+      "EF Core",
+    ],
   },
   {
-    group: "DevOps & Cloud",
-    items: ["Docker", "Kubernetes", "AWS", "Azure / Azure DevOps (AKS)", "Kafka / RabbitMQ"],
+    group: "Cloud & DevOps",
+    items: [
+      "AWS / Azure",
+      "Docker / Kubernetes / AKS",
+      "Azure DevOps / GitHub Actions / Jenkins",
+      "CI/CD / Git",
+    ],
   },
 ];
 
