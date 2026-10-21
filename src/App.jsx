@@ -20,10 +20,10 @@ const getInitialTheme = () => {
 };
 
 const getInitialMode = () => {
-  if (typeof window === "undefined") return "terminal";
-  return window.localStorage.getItem("viewMode") === "simple"
-    ? "simple"
-    : "terminal";
+  if (typeof window === "undefined") return "simple";
+  return window.localStorage.getItem("portfolioView") === "terminal"
+    ? "terminal"
+    : "simple";
 };
 
 const App = () => {
@@ -37,7 +37,7 @@ const App = () => {
 
   useEffect(() => {
     document.documentElement.setAttribute("data-mode", mode);
-    window.localStorage.setItem("viewMode", mode);
+    window.localStorage.setItem("portfolioView", mode);
   }, [mode]);
 
   const enterSimple = useCallback(() => {

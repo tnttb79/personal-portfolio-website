@@ -3,7 +3,7 @@ import "./contact.scss";
 import emailjs from "@emailjs/browser";
 import { socials } from "../../config/portfolio";
 
-const Contact = () => {
+const Contact = ({ variant = "terminal" }) => {
   const formRef = useRef();
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -79,7 +79,7 @@ const Contact = () => {
           <label className="field-label" htmlFor="c-msg">message</label>
           <textarea id="c-msg" rows={7} placeholder="Any message works, just not your SSN or credit card number..." name="message" />
         </div>
-        <button type="submit">$ send --message</button>
+        <button type="submit">{variant === "simple" ? "Send message" : "$ send --message"}</button>
         {error && (
           <span className="form-status error" role="alert">
             ✗ Error sending message. Please try again.

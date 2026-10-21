@@ -1,152 +1,121 @@
-import { useState } from "react";
-import "./simple.scss";
 import ScrollTopButton from "../scrolltop/ScrollTopButton";
-import {
-  profile,
-  socials,
-  about,
-  skills,
-  projects,
-  resumeUrl,
-} from "../../config/portfolio";
+import Contact from "../sections/Contact";
+import { profile, socials, about, skills, projects, resumeUrl } from "../../config/portfolio";
+import "./simple.scss";
 
-const PROJECT_PREVIEW = 2;
-
-/*
- * The "no-frills" recruiter view: a calm, light, single-column document.
- * Same content as the terminal site, optimized for fast human scanning.
- */
-const SimpleView = ({ onExit }) => {
-  const [showAllProjects, setShowAllProjects] = useState(false);
-  const visibleProjects = showAllProjects
-    ? projects
-    : projects.slice(0, PROJECT_PREVIEW);
-  const remaining = projects.length - PROJECT_PREVIEW;
-
-  return (
-    <div className="simple">
-      <div className="simple-topbar">
-        <span className="simple-topbar__note">Boring mode</span>
-        <button type="button" className="simple-topbar__back" onClick={onExit}>
-          ← Back to the script kiddie version
-        </button>
+const Project = ({ project }) => (
+  <details className="work-entry">
+    <summary>
+      <span className="work-thumbnail" aria-hidden="true">
+        {project.img ? <img src={project.img} alt="" loading="lazy" /> : (
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 3h6v6H9zM2 15h6v6H2zM16 15h6v6h-6zM12 9v3M5 15v-3h14v3" stroke="currentColor" strokeWidth="1.4" /></svg>
+        )}
+      </span>
+      <h3>{project.title}</h3>
+      <span className="work-toggle" aria-hidden="true"><span /><span /></span>
+    </summary>
+    <div className="work-detail">
+      <div className="work-preview">
+        {project.visual === "architecture" ? (
+          <div className="work-architecture" role="img" aria-label="Frontend, integration layer, and managed services architecture diagram">
+            <span>Astro + React</span>
+            <i aria-hidden="true">↓</i>
+            <span>Typed adapters</span>
+            <i aria-hidden="true">↓</i>
+            <div><span>Headless CMS</span><span>Calendar API</span></div>
+          </div>
+        ) : <img src={project.img} alt={`${project.title} screenshot`} loading="lazy" decoding="async" />}
       </div>
+      <p className="work-description">{project.desc}</p>
+      <ul className="work-technologies" aria-label={`${project.title} technologies`}>
+        {project.technologies.map((technology) => <li key={technology}>{technology}</li>)}
+      </ul>
+      <div className="work-links">
+        {project.demo ? <a href={project.demo} target="_blank" rel="noreferrer" aria-label={`${project.demoLabel || "Live demo"}: ${project.title}`}>{project.demoLabel || "Live demo"}</a> : <span>Demo coming soon</span>}
+        {project.details && <a href={project.details} target="_blank" rel="noreferrer" aria-label={`Technical details: ${project.title}`}>Technical details</a>}
+        {project.github && <a href={project.github} target="_blank" rel="noreferrer" aria-label={`GitHub: ${project.title}`}>GitHub</a>}
+      </div>
+    </div>
+  </details>
+);
 
-      <div className="simple-inner">
-        <header className="simple-head">
-          <p className="simple-eyebrow">{socials.location} · {profile.role}</p>
-          <h1 className="simple-name">{profile.name}</h1>
-          <p className="simple-lead">{profile.blurb}</p>
-
-          <span className="simple-status">
-            <span className="dot" aria-hidden="true" />
-            maybe open to work
-          </span>
-
-          <nav className="simple-contacts" aria-label="Contact and links">
-            <a href={`mailto:${socials.email}`}>Email</a>
-            <a href={socials.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+const SimpleView = ({ onExit }) => (
+  <div className="simple" id="top">
+    <a className="simple-skip" href="#main-content">Skip to content</a>
+    <div className="simple-layout">
+      <header className="simple-sidebar">
+        <div className="simple-identity">
+          <a href="#top" className="simple-name"><h1>{profile.name}</h1></a>
+          <p className="simple-role">{profile.role}</p>
+          <p className="simple-location">{socials.location}</p>
+          <p className="simple-status">maybe open to work</p>
+        </div>
+        <nav className="simple-nav" aria-label="Main navigation">
+          <a href="#projects">Projects</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div className="simple-sidebar-links">
+          <a className="simple-resume" href={resumeUrl} target="_blank" rel="noreferrer">Resume <span>PDF</span></a>
+          <div className="simple-socials">
             <a href={socials.github} target="_blank" rel="noreferrer">GitHub</a>
-            <a href={resumeUrl} target="_blank" rel="noreferrer" className="is-cta">
-              Resume ↗
-            </a>
-          </nav>
-        </header>
+            <a href={socials.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href={`mailto:${socials.email}`}>Email</a>
+          </div>
+        </div>
+      </header>
 
-        <section className="simple-section" aria-labelledby="s-about">
-          <p className="simple-label" id="s-about"><span>01</span> Profile</p>
-          <div className="simple-prose">
-            {about.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
+      <main id="main-content" className="simple-content" tabIndex={-1}>
+        <div className="simple-intro">
+          <p className="simple-lead">{profile.blurb}</p>
+          <p className="simple-focus">{profile.stack.join(", ")}</p>
+        </div>
+
+        <section className="simple-section simple-work" id="projects" aria-labelledby="work-heading">
+          <div className="simple-section-head">
+            <h2 id="work-heading">Projects</h2>
+            <p>Open a project for the full details.</p>
+          </div>
+          <div className="work-index">
+            {projects.map((project) => <Project project={project} key={project.id} />)}
           </div>
         </section>
 
-        <section className="simple-section" aria-labelledby="s-skills">
-          <p className="simple-label" id="s-skills"><span>02</span> Skills</p>
+        <section className="simple-section" id="about" aria-labelledby="about-heading">
+          <div className="simple-section-head"><h2 id="about-heading">About</h2></div>
+          <div className="simple-prose">
+            <img className="simple-portrait" src="/about.png" alt="Illustration of Thang Ta" width="1024" height="1024" loading="lazy" />
+            {about.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          </div>
+        </section>
+
+        <section className="simple-section" id="skills" aria-labelledby="skills-heading">
+          <div className="simple-section-head"><h2 id="skills-heading">Skills</h2></div>
           <div className="simple-skills">
             {skills.map((group) => (
               <div className="skill-block" key={group.group}>
                 <h3>{group.group}</h3>
-                <p>{group.items.join(", ")}</p>
+                <ul>{group.items.map((item) => <li key={item}>{item}</li>)}</ul>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="simple-section" aria-labelledby="s-proj">
-          <p className="simple-label" id="s-proj"><span>03</span> Selected projects</p>
-          <ul className="simple-projects">
-            {visibleProjects.map((p) => (
-              <li key={p.id}>
-                <div className="proj-head">
-                  <h3>{p.title}</h3>
-                  <div className="proj-links">
-                    {p.demo && (
-                      <a href={p.demo} target="_blank" rel="noreferrer">{p.demoLabel || "Live"} ↗</a>
-                    )}
-                    {p.details && (
-                      <a href={p.details} target="_blank" rel="noreferrer">Technical details ↗</a>
-                    )}
-                    {p.github && (
-                      <a href={p.github} target="_blank" rel="noreferrer">Code ↗</a>
-                    )}
-                  </div>
-                </div>
-                <p className="proj-desc">{p.desc}</p>
-                <p className="proj-tech">{p.technologies.join(" · ")}</p>
-              </li>
-            ))}
-          </ul>
-          {remaining > 0 && (
-            <button
-              type="button"
-              className="simple-more"
-              onClick={() => setShowAllProjects((v) => !v)}
-              aria-expanded={showAllProjects}
-            >
-              {showAllProjects
-                ? "Show less"
-                : `Show ${remaining} more project${remaining > 1 ? "s" : ""}`}
-              <span className="chev" aria-hidden="true">{showAllProjects ? "↑" : "↓"}</span>
-            </button>
-          )}
-        </section>
-
-        <section className="simple-section" aria-labelledby="s-contact">
-          <p className="simple-label" id="s-contact"><span>04</span> Get in touch</p>
-          <div className="simple-contact-block">
-            <p>
-              The fastest way to reach me is email. I usually reply within a day.
-            </p>
-            <div className="contact-rows">
-              <div className="c-row">
-                <span className="c-key">Email</span>
-                <a href={`mailto:${socials.email}`}>{socials.email}</a>
-              </div>
-              <div className="c-row">
-                <span className="c-key">Phone</span>
-                <a href={`tel:${socials.phone.replace(/\s/g, "")}`}>{socials.phone}</a>
-              </div>
-              <div className="c-row">
-                <span className="c-key">Location</span>
-                <span>{socials.location}</span>
-              </div>
-            </div>
-          </div>
+        <section className="simple-section simple-contact" id="contact" aria-labelledby="contact-heading">
+          <div className="simple-section-head"><h2 id="contact-heading">Contact</h2></div>
+          <p className="simple-contact-note">The fastest way to reach me is email. I usually reply within a day.</p>
+          <Contact variant="simple" />
         </section>
 
         <footer className="simple-foot">
-          <span>© {new Date().getFullYear()} {profile.name}</span>
-          <button type="button" className="simple-foot__back" onClick={onExit}>
-            Prefer the terminal? Switch back →
-          </button>
+          <span>© {new Date().getFullYear()} {profile.name}. Thanks for visiting.</span>
+          <button type="button" onClick={onExit}>Terminal view</button>
         </footer>
-      </div>
-
-      <ScrollTopButton variant="simple" />
+      </main>
     </div>
-  );
-};
+    <ScrollTopButton variant="simple" />
+  </div>
+);
 
 export default SimpleView;
