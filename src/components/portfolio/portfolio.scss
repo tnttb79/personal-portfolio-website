@@ -1,0 +1,295 @@
+.intro {
+  padding-top: 28px;
+  padding-bottom: 80px;
+}
+
+.intro-nav {
+  margin-left: calc(var(--label-col) + var(--col-gap));
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 28px;
+    list-style: none;
+  }
+
+  a {
+    display: inline-block;
+    padding-block: 10px;
+    font-size: var(--text-sm);
+    text-decoration: none;
+    transition: color 160ms ease-out;
+
+    &:hover {
+      color: var(--cobalt);
+    }
+  }
+}
+
+.intro-name {
+  margin-top: clamp(56px, 8vw, 112px);
+  margin-left: -0.05em;
+  font-size: var(--text-display);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+}
+
+.intro-body {
+  display: grid;
+  grid-template-columns: var(--label-col) minmax(0, 1fr) 248px;
+  gap: 24px var(--col-gap);
+  align-items: start;
+  margin-top: 40px;
+}
+
+.intro-portrait {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius);
+  background: var(--rule);
+}
+
+.intro-role {
+  padding-top: 6px;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+
+  span {
+    display: block;
+    color: var(--graphite);
+  }
+}
+
+.intro-lede {
+  max-width: 30ch;
+  font-size: var(--text-lg);
+  line-height: 1.32;
+  letter-spacing: -0.015em;
+}
+
+.intro-status {
+  margin-top: 20px;
+  color: var(--graphite);
+}
+
+.intro-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+main:focus {
+  outline: none;
+}
+
+.work-list {
+  min-width: 0;
+}
+
+.project {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 24px 40px;
+  align-items: start;
+
+  & + & {
+    margin-top: 56px;
+    padding-top: 56px;
+    border-top: 1px solid var(--rule);
+  }
+
+  h3 {
+    font-size: var(--text-md);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+}
+
+.project-desc {
+  margin-top: 12px;
+  max-width: 52ch;
+  color: var(--graphite);
+}
+
+.project .step-flow {
+  margin-top: 20px;
+}
+
+.project-stack {
+  margin-top: 20px;
+  font-size: var(--text-xs);
+  line-height: 1.6;
+  color: var(--graphite);
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 24px;
+  margin-top: 12px;
+  list-style: none;
+  font-size: var(--text-sm);
+
+  a {
+    display: inline-block;
+    padding-block: 10px;
+  }
+}
+
+.project-pending {
+  padding-block: 10px;
+  color: var(--graphite);
+}
+
+.project-media {
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top left;
+  }
+
+  &--diagram {
+    display: grid;
+    place-items: center;
+    padding: 28px;
+    background: transparent;
+  }
+}
+
+.about-text {
+  max-width: 62ch;
+
+  p + p {
+    margin-top: 18px;
+  }
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px 28px;
+}
+
+.skill-group {
+  h3 {
+    font-size: var(--text-sm);
+    font-weight: 600;
+  }
+
+  ul {
+    margin-top: 10px;
+    list-style: none;
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    color: var(--graphite);
+  }
+
+  li + li {
+    margin-top: 6px;
+  }
+}
+
+.site-foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px 24px;
+  padding-block: 28px 48px;
+  border-top: 1px solid var(--rule);
+  font-size: var(--text-xs);
+  color: var(--graphite);
+
+  ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+
+  a {
+    display: inline-block;
+    padding-block: 10px;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--cobalt);
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .intro-body {
+    grid-template-columns: var(--label-col) minmax(0, 1fr) 184px;
+  }
+
+  .skills {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .project-media {
+    max-width: 640px;
+  }
+}
+
+@media (max-width: 860px) {
+  .intro {
+    padding-bottom: 72px;
+  }
+
+  .intro-nav {
+    margin-left: 0;
+  }
+
+  .intro-body {
+    grid-template-columns: 1fr;
+    margin-top: 28px;
+  }
+
+  .intro-portrait {
+    order: -1;
+    width: 120px;
+  }
+
+  .intro-role {
+    padding-top: 0;
+  }
+
+  .project + .project {
+    margin-top: 44px;
+    padding-top: 44px;
+  }
+}
+
+@media (max-width: 560px) {
+  .intro-nav ul {
+    gap: 0 20px;
+  }
+
+  .intro-lede {
+    font-size: 1.4375rem;
+  }
+
+  .skills {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .project-media--diagram {
+    padding: 20px 12px;
+  }
+}
