@@ -3,10 +3,10 @@
 
 export const profile = {
   name: "Thang Ta",
-  role: "AI Engineer & Software Developer",
+  role: "AI Engineer & Software Engineer",
   location: "Phoenix, Arizona",
-  lede: "I build AI agents, retrieval systems and the full-stack applications they run in, from first idea to a working product.",
-  status: "Open to conversations about AI engineering and full-stack roles.",
+  lede: "I combine a strong software engineering background with modern AI to build powerful, intelligent systems.",
+  status: "Open to conversations about AI engineering and software engineering roles.",
 };
 
 export const resumeUrl = "/Thang_Ta_Resume.pdf";
@@ -28,8 +28,9 @@ export const navItems = [
 
 export const about = {
   paragraphs: [
-    "I'm an AI engineer and software developer. I started out with SQL and Python for data analysis and automation, moved into web development, and now build AI-powered tools and full-stack applications from idea to working product.",
-    "I care about clean architecture and the small details that make software easier to use. This site is where I share the projects I'm proudest of. Outside of work I learn languages and play soccer.",
+    "I'm a software engineer with a background in full-stack development, distributed systems, and AI engineering.",
+    "My experience spans everything from designing complex architectures to building AI agents and bringing complete applications into production. I enjoy tackling hard engineering problems and turning sophisticated technology into software that's simple and intuitive to use.",
+    "Outside of work, I enjoy learning languages and playing soccer.",
   ],
 };
 
